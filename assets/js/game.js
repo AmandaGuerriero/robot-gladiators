@@ -22,13 +22,29 @@ var fight = function() {
         playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining. "
     );
 
+    // check enemy's health
+    if (enemyHealth <= 0) {
+        window.alert(enemyName + " has died! ");
+    }
+    else {
+        window.alert(enemyName + " still has " + enemyHealth + " health left. ");
+    }
+
     // Update playerHealth by subtracting enemyAttack
-    playerHealth = playerHealth - enemyAttack
+    playerHealth = playerHealth - enemyAttack;
 
     // Log playerHealth
     console.log(
         enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining. "
     );
+
+    // check player's health
+    if (playerHealth <= 0) {
+        window.alert (playerName + " has died! ");
+    }
+    else {
+        window.alert (playerName + " still has " + playerHealth + " health left. ");
+    }
 
 };
 
