@@ -73,15 +73,42 @@ var fight = function(enemyName) {
     }
 }
 
-for(var i = 0; i < enemyNames.length; i++) {
-    if (playerHealth > 0) {
-        window.alert("Welcome to Robot Gladiators! Round " + (i +1));
-        var pickedEnemyName = enemyNames[i];
-        enemyHealth = 50;
-        debugger;
-        fight(pickedEnemyName);
-    } else {
-        window.alert("You have lost your robot in battle! Game Over!");
-        break;
+var startGame = function () {
+    // Reset Player Health
+    playerHealth = 100;
+    playerAttack = 10;
+    playerMoney = 10;
+    for(var i = 0; i < enemyNames.length; i++) {
+        if (playerHealth > 0) {
+            // Ask to Buy Things
+            window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
+            var pickedEnemyName = enemyNames[i];
+            enemyHealth = 50;
+            fight(pickedEnemyName);
+        } else {
+            window.alert("You have lost your robot in battle! Game Over!");
+            break;
+        }
     }
-}
+    endGame();
+};
+
+var endGame = function () {
+    // If player is alive, player wins! 
+    if (playerHealth > 0) {
+        window.alert ("Great job, you've survived the game! You now have a score of " + playerHealth + ".");
+    } else {
+        window.alert ("You've lost your robot in battle");
+    }
+    // Ask player if they want to play again
+    var playAgainConfirm = window.confirm ("Do you want to play again?")
+        if (playAgainConfirm) {
+            // Restart Game
+            startGame ()
+        }
+        else {
+            window.alert("Thank you for playing Robot Gladiators! Come back soon!")
+        }
+    }
+// Start Game when Page Loads
+startGame ();
