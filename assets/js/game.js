@@ -18,6 +18,24 @@ var fight = function(enemyName) {
         // Ask player to fight or skip
         var promptFight = window.prompt("Do you want to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
         
+        // If player choses to skip
+        if (promptFight === "SKIP" || promptFight === "skip") {
+            var confirmSkip = window.confirm("Are you sure you want to skip?");
+
+            // If yes, leave fight
+            if (confirmSkip) {
+                window.alert(playerName + " has decided to skip the fight. Goodbye!");
+                // Remove $2 in Player Money
+                playerMoney = playerMoney - 10;
+                console.log("playerMoney", playerMoney)
+                break;
+            } 
+             
+            // If no, ask question again by running fight again
+             else {
+                fight ();
+            }
+        }
         // If player chooses to fight
         if (promptFight === "FIGHT" || promptFight === "fight") {
             // Update enemyHealth by subtracting playerAttack
@@ -46,26 +64,9 @@ var fight = function(enemyName) {
                 window.alert (playerName + " still has " + playerHealth + " health left. ");
             }
         }
-
-        // If player choses to skip
-        else if (promptFight === "SKIP" || promptFight === "skip") {
-            var confirmSkip = window.confirm("Are you sure you want to skip?");
-
-            // If yes, leave fight
-            if (confirmSkip) {
-                window.alert(playerName + " has decided to skip the fight. Goodbye!");
-                // Remove $2 in Player Money
-                playerMoney = playerMoney - 10;
-                console.log("playerMoney", playerMoney)
-                break;
-            } 
-            // If no, ask question again by running fight again
-            else {
-                fight ();
-            }
         
         // If player types something invalid
-        } else {
+        else {
             window.alert("You need to pick a valid option. Try again!");
             fight ();
         }
